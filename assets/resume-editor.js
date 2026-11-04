@@ -1,5 +1,7 @@
 (()=>{
 'use strict';
+// Résumé editing is available only in the local Codex preview.
+if (!['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) return;
 const key='beini-resume-drafts-v1';
 const fields=[...document.querySelectorAll('.intro h1,.tagline,.identity-foot>span,.resume .label>span,.resume .bio,.experience .date,.experience h3,.experience p,.education h3,.education p,.skills>span,footer .contact,footer p')];
 const original=fields.map(e=>e.innerHTML);
