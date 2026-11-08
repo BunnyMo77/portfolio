@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 393 850" width="393" height="850"><defs><clipPath id="clip_4">
+<path transform="matrix(1,0,0,-1,65.95532,437.91407)" d="M0 274.09767H244.37625V-.000031H0V274.09767Z" />
+</clipPath>
+<mask id="mask_5">
+<g transform="matrix(.20639886,0,0,.20639886,65.95532,163.8164)">
+<image id="image_6" width="1184" height="1328" xlink:href="runner-embedded-01.png" />
+</g>
+</mask>
+</defs><g><g clip-path="url(#clip_4)">
+<g mask="url(#mask_5)">
+<g transform="matrix(.20639886,0,0,.20639886,65.95532,163.8164)">
+<image id="image_7" width="1184" height="1328" xlink:href="runner-embedded-02.jpg" />
+</g>
+</g>
+</g>
+</g></svg>
