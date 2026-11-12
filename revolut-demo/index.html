@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#1c101a"><title>Beini Mo · Year in Review</title>
+  <link rel="icon" href="data:,"><link rel="stylesheet" href="style.css?v=receipts-rise">
+</head>
+<body>
+  <main class="review">
+    <div class="phone-shell">
+      <div class="viewport" id="viewport" tabindex="0" aria-label="Year in Review stories. Swipe up or use the next story button.">
+        <div class="artboard" id="artboard">
+          <div class="scene-background"><img id="burgundy-background" src="assets/review/background.png" alt=""><img id="coffee-background" src="assets/coffee/background.png" alt=""></div>
+          <div class="shared-ball" id="shared-ball"><div class="ball-opening" id="ball-opening"><div class="ball-idle"><video id="disco" autoplay loop muted playsinline preload="auto" aria-label="Spinning pink mirrored disco ball"><source src="assets/disco-spin.webm" type="video/webm"></video></div></div></div>
+          <section class="page transitions" id="transitions" aria-label="Transition Moments">
+            <div class="layer hero" data-enter="0" data-exit="top"><img class="number-glow" src="assets/review/count.png" alt="189"></div>
+            <div class="layer caption" data-enter="180" data-exit="top"><img src="assets/review/caption.png" alt="transitions during 2026"></div>
+            <div class="layer beam" data-enter="650" data-exit="middle"><img src="assets/review/beam.png" alt=""></div>
+            <div class="layer flames" data-enter="800" data-exit="middle"><img class="fire-art" src="assets/review/flame.svg" alt="Pink flame outline"></div>
+            <div class="layer earth" data-enter="1250" data-exit="middle"><img class="float-earth" src="assets/review/earth.png" alt="Living on earth −€27.19"></div>
+            <div class="layer morning" data-enter="1450" data-exit="middle"><img class="float-morning" src="assets/review/morning.png" alt="Morning Spend −€27.19"></div>
+            <div class="layer callout moments-callout" data-enter="2020" data-exit="bottom"><img src="assets/review/moments-callout.png" alt="That's 1,284 little moments."></div>
+          </section>
+          <section class="page purchase" id="purchase" aria-label="McDonald's Purchase in Turin" aria-hidden="true" inert>
+            <div class="layer date" data-enter="0" data-exit="top"><img src="assets/review/date.png" alt="in 14 February, at"></div>
+            <div class="layer clock" data-enter="170" data-exit="top" aria-label="12:08"><img src="assets/review/clock.png" alt=""><div class="clock-digits" aria-hidden="true"><span>1</span><span>2</span><span>0</span><span>8</span></div></div>
+            <div class="layer merchant" data-enter="470" data-exit="top"><img src="assets/review/merchant.png" alt="you made a purchase at a McDonald's in Turin."></div>
+            <div class="layer scene pink-route" id="pink-route" data-enter="720" data-exit="middle" aria-hidden="true"></div>
+            <div class="layer scene burger" data-enter="930" data-exit="middle"><img src="assets/review/burger.svg" alt="Burger illustration"></div>
+            <div class="layer scene accents" data-enter="1080" data-exit="middle"><img class="float-accents" src="assets/review/motion-accents.svg" alt=""></div>
+            <div class="layer scene runner" data-enter="1200" data-exit="middle"><img class="float-runner" src="assets/review/runner.svg" alt="Gold running figure"></div>
+            <div class="layer scene bag" data-enter="1360" data-exit="middle"><img class="float-bag" src="assets/review/bag.svg" alt="McDonald's shopping bag"></div>
+            <div class="layer scene star" data-enter="1510" data-exit="middle"><img class="float-star" src="assets/review/star.svg" alt=""></div>
+            <div class="layer scene dot" data-enter="1650" data-exit="middle"><img class="float-dot" src="assets/review/pink-dot.svg" alt=""></div>
+            <div class="layer callout regular-callout" data-enter="2220" data-exit="bottom"><img src="assets/review/regular-callout.png" alt="At this point, calling yourself a regular feels rather modest."></div>
+            <div class="home-indicator" aria-hidden="true"></div>
+          </section>
+          <section class="page coffee" id="coffee" aria-label="Morning Coffee Ritual" aria-hidden="true" inert>
+            <div class="layer coffee-intro" data-coffee="intro"><img src="assets/coffee/intro.png" alt="You made 89 coffee purchases at WTF Coffee in the morning."></div>
+            <div class="layer coffee-count" data-coffee="count"><img class="number-glow" src="assets/coffee/count.png" alt="56"></div>
+            <div class="layer coffee-caption" data-coffee="caption"><img src="assets/coffee/caption.png" alt="of them were exactly"></div>
+            <div class="layer coffee-price" data-coffee="price"><img src="assets/coffee/price.png" alt="€3.99"></div>
+            <div class="layer scene coffee-cups" data-coffee="cups"><div class="cups-idle"><img src="assets/coffee/cups-and-figure.svg" alt="Gold figure with a laptop sitting in three stacked coffee cups"></div></div>
+            <div class="layer scene coffee-lamp" data-coffee="lamp"><div class="lamp-idle"><img src="assets/coffee/lamp.svg" alt="Pink hanging lamp swinging into the scene"></div></div>
+            <div class="layer coffee-dialogue" data-coffee="dialogue"><img src="assets/coffee/dialogue.png" alt="At this point, calling yourself a regular feels rather modest."></div>
+            <div class="layer coffee-receipts" data-coffee="receipts"><button id="show-receipts" aria-label="Show me the receipts"><img src="assets/coffee/receipts-label.png" alt=""></button></div>
+          </section>
+        </div>
+        <nav class="story-progress" aria-label="Story progress"><button class="segment is-current" data-page="0" aria-label="Transition Moments" aria-current="step"><span></span></button><button class="segment" data-page="1" aria-label="McDonald's Purchase in Turin"><span></span></button><button class="segment" data-page="2" aria-label="Morning Coffee Ritual"><span></span></button></nav>
+      </div>
+    </div>
+    <footer class="controls"><button class="replay" id="replay" aria-label="Replay current story">Replay</button><span class="gesture-hint" id="hint">Swipe up to continue</span><button class="next" id="next" aria-label="Next story">Next</button></footer>
+    <p class="screen-reader-only" id="announcement" aria-live="polite">Transition Moments, story 1 of 3</p>
+  </main>
+  <dialog class="receipts-dialog" id="receipts-dialog" aria-label="Coffee receipts preview"><button id="close-receipts" aria-label="Close receipts">×</button><img src="assets/coffee/receipts.png" alt="Supplied receipts preview, with example transactions and a prompt to scroll to see all 43 visits."></dialog>
+  <script src="artwork.js"></script><script src="motion.js"></script><script src="app.js"></script>
+</body>
+</html>
