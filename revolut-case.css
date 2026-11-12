@@ -147,3 +147,13 @@
 
 .hero.hero-cover{display:block;min-height:0;padding:0;background:#321b29;overflow:hidden}
 .hero-cover-image{display:block;width:100%;height:auto}
+
+.hifi-content{align-items:center}
+.hifi-heading{align-self:center;max-width:520px}
+.hifi-step{font-size:12px;letter-spacing:.03em;margin:0 0 34px}
+.hifi-heading h1{display:inline-block;width:max-content;max-width:95%;padding:18px 22px 14px;background:#f6d8aa;color:#21151c;font-size:clamp(32px,5vw,66px);line-height:.92;letter-spacing:-.07em;box-shadow:9px 10px 0 #321b29;transform:rotate(5deg);overflow-wrap:normal}
+.hifi-heading h1.is-changing{opacity:.25;transform:translateY(8px) rotate(5deg)}
+.hifi-details{display:grid;gap:12px;margin-top:42px}
+.hifi-details p{width:max-content;max-width:95%;margin:0;padding:17px 21px;background:#603e58;color:#fff7f5;border-radius:25px;font-size:clamp(17px,2vw,27px);line-height:1.12;letter-spacing:-.035em}
+.hifi-details mark{background:#f2ede9;color:#321b29;padding:0 .12em}
+@media(max-width:720px){.hifi-heading{width:100%;max-width:440px}.hifi-step{margin-bottom:25px}.hifi-heading h1{font-size:clamp(30px,8vw,48px);padding:14px 18px 12px}.hifi-details{margin-top:32px}.hifi-details p{font-size:clamp(18px,4.5vw,24px)}}

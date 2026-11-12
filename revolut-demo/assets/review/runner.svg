@@ -3,13 +3,13 @@
 </clipPath>
 <mask id="mask_5">
 <g transform="matrix(.20639886,0,0,.20639886,65.95532,163.8164)">
-<image id="image_6" width="1184" height="1328" xlink:href="runner-embedded-01.png" />
+<image id="image_6" width="1184" height="1328" xlink:href="../embedded/924529246db190b723.png" />
 </g>
 </mask>
 </defs><g><g clip-path="url(#clip_4)">
 <g mask="url(#mask_5)">
 <g transform="matrix(.20639886,0,0,.20639886,65.95532,163.8164)">
-<image id="image_7" width="1184" height="1328" xlink:href="runner-embedded-02.jpg" />
+<image id="image_7" width="1184" height="1328" xlink:href="../embedded/ac3efc6754aed03c85.jpg" />
 </g>
 </g>
 </g>

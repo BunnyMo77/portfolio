@@ -203,13 +203,32 @@
 
   const iframe = document.querySelector('.demo-frame iframe');
   const heading = document.querySelector('#demo-heading');
-  const titles = ['TRANSITION<br>MOMENTS', 'PURCHASE<br>MOMENTS', 'MORNING<br>COFFEE'];
+  const step = document.querySelector('#demo-step');
+  const primary = document.querySelector('#demo-detail-primary');
+  const secondary = document.querySelector('#demo-detail-secondary');
+  const stories = [
+    ['01 / A YEAR OF MOMENTS', 'TRANSITION<br>MOMENTS', '189 transitions during 2026.', 'That’s 1,284 little moments.'],
+    ['02 / A LATE-NIGHT MOMENT', 'TRANSITION<br>MOMENTS', 'You made a purchase at a <mark>McDonald’s in Turin.</mark>', 'Who doesn’t fancy a cheeky McDonald’s when hunger strikes?'],
+    ['03 / A SAVINGS MOMENT', 'FIRST SAVINGS<br>ACCOUNT', 'You opened your first Revolut Savings account after paying rent.', 'We’re glad you made room for us too.'],
+    ['04 / A MORNING MOMENT', 'MORNING<br>COFFEE', 'You made 89 coffee purchases at WTF Coffee in the morning.', 'At this point, calling yourself a regular feels rather modest.'],
+    ['05 / A FRIDAY MOMENT', 'FRIDAY<br>NIGHTS', 'You treated yourself a little better on Friday nights: 39% more than on weekdays.', 'Apparently, your weekend starts before you even get home.']
+  ];
+  const shareStories = {
+    editor: ['06 / YOUR STORY', 'SHARE YOUR<br>YEAR', 'Choose the details that appear in your recap.', 'Preview your card before sharing.'],
+    sheet: ['07 / SHARE', 'CHOOSE WHERE<br>TO SHARE', 'Your recap is ready.', 'Pick where you want to share it.'],
+    story: ['08 / STORY PREVIEW', 'YOUR STORY', 'See your recap as a story.', 'Go back to make changes.']
+  };
+  const demoOrigin = iframe ? new URL(iframe.src, location.href).origin : null;
   window.addEventListener('message', event => {
-    if (event.source !== iframe?.contentWindow || event.origin !== window.location.origin) return;
+    if (event.source !== iframe?.contentWindow || event.origin !== demoOrigin) return;
     const page = event.data?.revolutDemoPage;
-    if (!Number.isInteger(page) || page < 0 || page >= titles.length) return;
-    if (heading.innerHTML === titles[page]) return;
-    heading.innerHTML = titles[page];
+    if (!Number.isInteger(page) || page < 0 || page >= stories.length) return;
+    const story = shareStories[event.data?.revolutShareMode] || stories[page];
+    if (step.textContent === story[0] && heading.innerHTML === story[1]) return;
+    step.textContent = story[0];
+    heading.innerHTML = story[1];
+    primary.innerHTML = story[2];
+    secondary.innerHTML = story[3];
     if (!reducedMotion.matches) {
       heading.classList.remove('is-changing');
       void heading.offsetWidth;
