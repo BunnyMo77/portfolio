@@ -220,7 +220,7 @@
   };
   const demoOrigin = iframe ? new URL(iframe.src, location.href).origin : null;
   window.addEventListener('message', event => {
-    if (event.source !== iframe?.contentWindow || event.origin !== demoOrigin) return;
+    if (event.source !== iframe?.contentWindow) return;
     const page = event.data?.revolutDemoPage;
     if (!Number.isInteger(page) || page < 0 || page >= stories.length) return;
     const story = shareStories[event.data?.revolutShareMode] || stories[page];
