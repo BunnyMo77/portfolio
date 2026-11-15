@@ -311,3 +311,12 @@
 .workflow-petal.golden-figure span{font-size:12px}
 @keyframes workflow-image-pan{to{transform:translateY(calc(110px - 100%))}}
 @media(max-width:720px){.workflow-petal-media{height:110px}}
+.page-header{grid-template-columns:1fr 1fr 1fr auto;column-gap:18px}
+.page-header .page-title{text-align:center}
+.page-header .page-brand{text-align:right}
+.language-switch{display:flex;align-items:center;gap:3px;white-space:nowrap;font-size:11px;letter-spacing:.04em}
+.language-switch button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;padding:5px 2px;cursor:pointer;opacity:.48}
+.language-switch button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.language-switch button:focus-visible{outline:2px solid var(--chocolate);outline-offset:2px}
+@media(max-width:720px){.page-header{grid-template-columns:1fr auto auto;column-gap:12px}.page-header .page-title{display:none}}
+@media(max-width:360px){.page-header .page-brand{display:none}.page-header{grid-template-columns:1fr auto}}

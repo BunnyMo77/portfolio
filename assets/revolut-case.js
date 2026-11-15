@@ -1,5 +1,6 @@
 (() => {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const isChinese = () => window.revolutI18n?.current() === 'zh';
   if (!reducedMotion.matches && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       for (const entry of entries) {
@@ -158,7 +159,7 @@
         card.append(img);
       } else {
         const label = document.createElement('span');
-        label.textContent = item.swatch || item.text;
+        label.textContent = item.swatch ? (isChinese() ? ({ PINK: '粉色', CHOCOLATE: '巧克力棕', 'WARM YELLOW': '暖黄色', 'WARM GRAY': '暖灰色' }[item.swatch] || item.swatch) : item.swatch) : item.text;
         card.append(label);
         if (item.swatch) {
           card.classList.add('swatch');
@@ -218,25 +219,51 @@
     sheet: ['07 / SHARE', 'CHOOSE WHERE<br>TO SHARE', 'Your recap is ready.', 'Pick where you want to share it.'],
     story: ['08 / STORY PREVIEW', 'YOUR STORY', 'See your recap as a story.', 'Go back to make changes.']
   };
-  const demoOrigin = iframe ? new URL(iframe.src, location.href).origin : null;
-  window.addEventListener('message', event => {
-    if (event.source !== iframe?.contentWindow) return;
-    const page = event.data?.revolutDemoPage;
-    if (!Number.isInteger(page) || page < 0 || page >= stories.length) return;
-    const story = shareStories[event.data?.revolutShareMode] || stories[page];
+  const storiesZh = [
+    ['01 / 生活中的小瞬间', '交易<br>时刻', '2026 年完成了 189 次交易。', '这些是 1,284 个生活中的小瞬间。'],
+    ['02 / 深夜时刻', '交易<br>时刻', '你在都灵的一家 <mark>麦当劳消费了。</mark>', '饿的时候，谁能拒绝一顿麦当劳呢？'],
+    ['03 / 储蓄时刻', '首个储蓄<br>账户', '付完房租后，你开通了第一个 Revolut 储蓄账户。', '很高兴你也为我们留了点空间。'],
+    ['04 / 早晨时刻', '早晨<br>咖啡', '你早上在 WTF Coffee 买了 89 次咖啡。', '这时候再叫自己常客，都有点谦虚了。'],
+    ['05 / 周五时刻', '周五<br>夜晚', '周五晚上你总会对自己好一点：比工作日多花了 39%。', '看来你还没到家，周末就已经开始了。']
+  ];
+  const shareStoriesZh = {
+    editor: ['06 / 你的故事', '分享你的<br>这一年', '选择要在年度回顾中展示的内容。', '分享前先预览卡片。'],
+    sheet: ['07 / 分享', '选择分享<br>平台', '年度回顾已经准备好了。', '选择你想分享的地方。'],
+    story: ['08 / 故事预览', '你的故事', '以故事形式查看年度回顾。', '返回修改内容。']
+  };
+  let currentPage = 0;
+  let currentShareMode = null;
+  const renderStory = (animate = false) => {
+    if (!step || !heading || !primary || !secondary) return;
+    const story = isChinese()
+      ? (shareStoriesZh[currentShareMode] || storiesZh[currentPage])
+      : (shareStories[currentShareMode] || stories[currentPage]);
     if (step.textContent === story[0] && heading.innerHTML === story[1]) return;
     step.textContent = story[0];
     heading.innerHTML = story[1];
     primary.innerHTML = story[2];
     secondary.innerHTML = story[3];
-    if (!reducedMotion.matches) {
+    if (animate && !reducedMotion.matches) {
       heading.classList.remove('is-changing');
       void heading.offsetWidth;
       heading.classList.add('is-changing');
       clearTimeout(heading.changeTimer);
       heading.changeTimer = setTimeout(() => heading.classList.remove('is-changing'), 170);
     }
+  };
+  window.addEventListener('message', event => {
+    if (event.source !== iframe?.contentWindow) return;
+    const page = event.data?.revolutDemoPage;
+    if (!Number.isInteger(page) || page < 0 || page >= stories.length) return;
+    currentPage = page;
+    currentShareMode = shareStories[event.data?.revolutShareMode] ? event.data.revolutShareMode : null;
+    renderStory(true);
   });
+  window.addEventListener('revolut:languagechange', () => {
+    if (assetRow) renderGroup(activeGroup);
+    renderStory();
+  });
+  renderStory();
 
   const frameGrid = document.querySelector('.frame-grid');
   const frameDialog = document.querySelector('.frame-dialog');
@@ -267,7 +294,7 @@
       if (!link || !frameGrid.contains(link)) return;
       event.preventDefault();
       preview.src = link.href;
-      preview.alt = link.querySelector('img')?.alt || 'Final page';
+      preview.alt = link.querySelector('img')?.alt || (isChinese() ? '最终页面' : 'Final page');
       frameDialog.showModal();
     });
     frameDialog.querySelector('.frame-close').addEventListener('click', () => frameDialog.close());
